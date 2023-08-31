@@ -36,7 +36,7 @@ const Weather = () => {
             setIsLoading(true)
             setError(true)
 
-            fetch(`${api.url}weather?q=${input}&units=metrics&APPID=${api.key}`)
+            fetch(`${api.url}weather?q=${input}&units=metric&APPID=${api.key}`)
             .then((res) => {
                 if (!res.ok) { // ! if the respond is bad or does not make sense
                     throw Error("Failed to fetch the weather data, please check your internet connection or your typing.")
