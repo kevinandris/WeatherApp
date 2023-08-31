@@ -29,6 +29,8 @@ const Weather = () => {
         }
 
         if (e.key === "Enter" && input !== "") {  // !  fetching the api data if the input is not empty 
+            setIsLoading(true)
+            setError(true)
             fetch(`${api.url}weather?q=${input}&units=metrics&APPID=${api.key}`)
             .then((res) => {
                 return res.json();
@@ -37,6 +39,8 @@ const Weather = () => {
                 console.log(data)
                 setWeather(data)
                 setInput("")
+                setError(false)
+                setIsLoading(false)
             })
         }
     }
@@ -76,6 +80,8 @@ const Weather = () => {
 
                         </div>
                     )}
+
+                    {isLoading && <h3>Loading...</h3>}
 
                 </div> 
             </div>
