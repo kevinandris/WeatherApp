@@ -3,7 +3,11 @@ import "./Weather.scss"
 
 const Weather = () => {
   return (
-    <div>Weather</div>
+    <section className='--100vh --center-all'>
+        <div className="container weather --flex-center">
+            
+        </div>
+    </section>
   )
 }
 
