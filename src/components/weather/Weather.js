@@ -14,6 +14,14 @@ const Weather = () => {
         url: "https://api.openweathermap.org/data/2.5/",
         key: "664384e76601b0d747d1884a39fb08bc",
     }
+
+    const getInput = (e) => {
+        setInput(e.target.value)
+    }
+
+    const getWeatherData = (e) => {
+        if (e.key)
+    }
     
     return (
         <section className='--100vh --center-all'>
@@ -25,7 +33,13 @@ const Weather = () => {
                     <p>31-08-2023</p>
 
                     <div className="--form-control --my2">
-                        <input type="text" placeholder='Search city name' />
+                        <input 
+                            type="text" 
+                            placeholder='Search city name' 
+                            onChange={getInput}
+                            value={input}
+                            onKeyPress={getWeatherData}
+                        />
                     </div>
 
                     <div className="result --card --my2">
