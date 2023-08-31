@@ -34,8 +34,8 @@ const Weather = () => {
 
             fetch(`${api.url}weather?q=${input}&units=metrics&APPID=${api.key}`)
             .then((res) => {
-                if (!res.ok) { // ! if the respond is bad
-                    throw Error("Failed to fetch the weather data, please check your internet connection.")
+                if (!res.ok) { // ! if the respond is bad or does not make sense
+                    throw Error("Failed to fetch the weather data, please check your internet connection or your typing.")
                 }
 
                 return res.json();
@@ -49,6 +49,9 @@ const Weather = () => {
             })
             .catch((err) => {
                 console.log(err.message)
+                setError(true)
+                setErrorMsg(err.message)
+                setIsLoading(false)
             })
         }
     }
@@ -74,7 +77,7 @@ const Weather = () => {
 
                     {/* // ! displaying an error otherwise the weather data */}
                     {error ? ( 
-                        <p>{errorMsg}</p>
+                        <p className={errorMsg != "" ?  "error" : ""}>{errorMsg}</p>
                     ) : (
                         <div className="result --card --my2">
                             <h2>{weather.name}, {weather.sys.country}</h2>
