@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 import "./Weather.scss"
 
 const Weather = () => {
+    // ! get today's date
+    let today = new Date()
+    let date = today.getDate() + "-" + (today.getMonth() + 1)  + "-" + today.getFullYear();
 
     /* variables declaration with useState */
     const [input, setInput] = useState("")
@@ -9,6 +12,7 @@ const Weather = () => {
     const [error, setError] = useState(true)
     const [isLoading, setIsLoading] = useState(false)
     const [weather, setWeather] = useState({})
+    const [dateToday, setDateToday] = useState(date);
 
     const api = {
         url: "https://api.openweathermap.org/data/2.5/",
@@ -63,7 +67,7 @@ const Weather = () => {
                 <div className="weather-app --text-light">
 
                     <h1>Weather App</h1>
-                    <p>31-08-2023</p>
+                    <p>{dateToday}</p>
 
                     <div className="--form-control --my2">
                         <input 
