@@ -63,14 +63,14 @@ const Weather = () => {
                         <p>{errorMsg}</p>
                     ) : (
                         <div className="result --card --my2">
-                            <h2>{}</h2>
+                            <h2>{weather.name}, {weather.sys.country}</h2>
                             <div className="icon">
                                 <img src="" alt="Clouds" />
                             </div>
 
-                            <p>Temp: 23°c</p>
-                            <p>Weather: Clouds</p>
-                            <p>Temp range: 23°c / 24°C</p>
+                            <p>Temp: {Math.round(weather.main.temp)}°c</p>
+                            <p>Weather: {Math.round(weather[0].main)}</p>
+                            <p>Temp range: {Math.round(weather.main.temp_min)}°c / {Math.round(weather.main.temp_max)}°C</p>
 
                         </div>
                     )}
