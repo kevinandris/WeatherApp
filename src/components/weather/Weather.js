@@ -15,6 +15,8 @@ const Weather = () => {
         key: "664384e76601b0d747d1884a39fb08bc",
     }
 
+    const iconURL = "http://openweathermap.org/img/w/"
+
     const getInput = (e) => {
         setInput(e.target.value)
     }
@@ -65,11 +67,11 @@ const Weather = () => {
                         <div className="result --card --my2">
                             <h2>{weather.name}, {weather.sys.country}</h2>
                             <div className="icon">
-                                <img src="" alt="Clouds" />
+                                <img src={iconURL + weather.weather[0].icon + ".png"} alt={(weather.weather[0].main)} />
                             </div>
 
                             <p>Temp: {Math.round(weather.main.temp)}°c</p>
-                            <p>Weather: {Math.round(weather[0].main)}</p>
+                            <p>Weather: {(weather.weather[0].main)}</p>
                             <p>Temp range: {Math.round(weather.main.temp_min)}°c / {Math.round(weather.main.temp_max)}°C</p>
 
                         </div>
