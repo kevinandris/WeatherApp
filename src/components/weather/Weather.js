@@ -15,7 +15,7 @@ const Weather = () => {
         key: "664384e76601b0d747d1884a39fb08bc",
     }
 
-    const iconURL = "http://openweathermap.org/img/w/"
+    const iconURL = "http://openweathermap.org/img/w/" // ! for current weather image
 
     const getInput = (e) => {
         setInput(e.target.value)
@@ -31,8 +31,13 @@ const Weather = () => {
         if (e.key === "Enter" && input !== "") {  // !  fetching the api data if the input is not empty 
             setIsLoading(true)
             setError(true)
+
             fetch(`${api.url}weather?q=${input}&units=metrics&APPID=${api.key}`)
             .then((res) => {
+                if (!res.ok) { // ! if the respond is bad
+                    throw Error("Failed to fetch the weather data, please check your internet connection.")
+                }
+
                 return res.json();
             })
             .then((data) => {
@@ -41,6 +46,9 @@ const Weather = () => {
                 setInput("")
                 setError(false)
                 setIsLoading(false)
+            })
+            .catch((err) => {
+                console.log(err.message)
             })
         }
     }
