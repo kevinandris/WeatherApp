@@ -20,9 +20,22 @@ const Weather = () => {
     }
 
     const getWeatherData = (e) => {
-        if (e.key === "Enter" && input === "") {
+        
+        if (e.key === "Enter" && input === "") {  // ! if input is empty 
             setErrorMsg("Input cannot be empty")
             setError(true)
+        }
+
+        if (e.key === "Enter" && input !== "") {  // !  fetching the api data if the input is not empty 
+            fetch(`${api.url}weather?q=${input}&units=metrics&APPID=${api.key}`)
+            .then((res) => {
+                return res.json();
+            })
+            .then((data) => {
+                console.log(data)
+                setWeather(data)
+                setInput("")
+            })
         }
     }
     
@@ -45,17 +58,23 @@ const Weather = () => {
                         />
                     </div>
 
-                    <div className="result --card --my2">
-                        <h2>Abuja</h2>
-                        <div className="icon">
-                            <img src="" alt="Clouds" />
+                    {/* // ! displaying an error otherwise the weather data */}
+                    {error ? ( 
+                        <p>{errorMsg}</p>
+                    ) : (
+                        <div className="result --card --my2">
+                            <h2>{}</h2>
+                            <div className="icon">
+                                <img src="" alt="Clouds" />
+                            </div>
+
+                            <p>Temp: 23°c</p>
+                            <p>Weather: Clouds</p>
+                            <p>Temp range: 23°c / 24°C</p>
+
                         </div>
+                    )}
 
-                        <p>Temp: 23°c</p>
-                        <p>Weather: Clouds</p>
-                        <p>Temp range: 23°c / 24°C</p>
-
-                    </div>
                 </div> 
             </div>
         </section>
