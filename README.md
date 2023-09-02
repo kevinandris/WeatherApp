@@ -9,6 +9,6 @@
    On Visual Studio Code terminal, type npm start
 
 #  The area of needing an improvement:
-   1) Clean all the unnecessary files.
+   1) Clean all the unnecessary files and removed the unused import files on a file for better visualisation and less lines of code.
    2) Firstly is to implement the global css code and import all the images.
    3) Be aware of the spelling of the url and key to avoid white/blank screen.
